@@ -1,1 +1,59 @@
 
+Useful Commands & Snippets
+
+Git
+---
+git log --oneline --graph --decorate --all     # pretty history
+git rebase -i HEAD~5                            # squash last 5 commits
+git restore --staged <file>                     # unstage a file
+git reflog                                      # find lost commits
+git switch -c feature/x                         # new branch (modern)
+
+Docker
+------
+docker ps -a                                    # all containers
+docker compose up -d --build                    # rebuild + run
+docker exec -it <id> /bin/sh                    # shell into container
+docker system prune -af --volumes               # nuke unused stuff
+
+Python / venv
+-------------
+python -m venv .venv
+source .venv/bin/activate                       # macOS / Linux
+.venv\Scripts\activate                          # Windows
+pip freeze > requirements.txt
+pip install -e .                                # editable install
+
+Ollama
+------
+ollama list                                     # installed models
+ollama pull llama3.2                            # download a model
+ollama run llama3.2                             # interactive chat
+ollama serve                                    # start daemon manually
+curl http://localhost:11434/api/tags            # check it's alive
+
+MCP
+---
+# Run an MCP server manually for debugging:
+python mcp_tool.py
+
+# Inspect tools without writing a client:
+npx @modelcontextprotocol/inspector python mcp_tool.py
+
+macOS
+-----
+pbcopy < file.txt                               # copy file to clipboard
+pbpaste > file.txt                              # paste clipboard to file
+caffeinate -t 3600                              # keep awake 1 hour
+killall Dock                                    # restart the Dock
+
+One-liners I always forget
+--------------------------
+# Find biggest files:
+du -sh * | sort -h
+
+# Replace text recursively (BSD sed on macOS):
+find . -type f -name "*.py" -exec sed -i '' 's/old/new/g' {} +
+
+# Pretty-print JSON:
+cat file.json | python -m json.tool
