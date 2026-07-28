@@ -1,0 +1,37 @@
+Learning Goals — 2026
+
+Theme of the Year: "Go deep, not wide."
+
+Q1 (Done)
+---------
+- [x] Finish Andrej Karpathy's "Zero to Hero" series
+- [x] Build a transformer from scratch in PyTorch
+- [x] Read "Designing ML Systems" by Chip Huyen
+
+Q2 (In progress)
+----------------
+- [ ] Master RAG end-to-end (chunking, retrieval, eval)
+- [ ] Ship one MCP server used by >10 people
+- [ ] Reach intermediate Rust (own one CLI tool in production)
+- [ ] Write 6 deep-dive blog posts (3 done)
+
+Q3 (Planned)
+------------
+- [ ] Production-grade vector DB internals (HNSW, IVF-PQ)
+- [ ] Finetuning small LLMs on custom data (LoRA, QLoRA)
+- [ ] Distributed systems fundamentals (Raft, Paxos)
+
+Q4 (Stretch)
+------------
+- [ ] Contribute a non-trivial PR to llama.cpp or vLLM
+- [ ] Open-source one well-loved repo (>500 GitHub stars)
+
+Anti-goals
+----------
+- Avoid jumping to the newest framework every week.
+- Avoid tutorial hell — always ship after learning.
+- Avoid measuring progress in hours; measure in shipped artifacts.
+
+Tracking
+--------
+Update this file every Sunday during weekly review.
