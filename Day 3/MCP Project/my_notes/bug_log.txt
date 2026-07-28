@@ -1,1 +1,35 @@
+Bug Log & Tech Debt
 
+[OPEN] RAG retrieval drops 12% recall on long queries (>40 tokens)
+   Root cause: query embedding gets dominated by stopwords.
+   Idea: try query rewriting with a small LLM before encoding.
+   Owner: me. Priority: P1.
+
+[OPEN] FAISS index rebuild takes 18 min on prod corpus
+   Bottleneck is single-threaded encoding, not FAISS.
+   Fix: batch + multiprocessing the SentenceTransformer call.
+   Estimated win: 18 min -> 4 min.
+
+[OPEN] Memory leak in ollama_client.py during long sessions
+   After ~200 tool calls, RSS climbs above 2GB.
+   Suspect: messages list never trimmed.
+   Fix: implement sliding-window history (keep last 20 turns).
+
+[FIXED] Server crashes when my_notes/ doesn't exist
+   Date: May 25, 2026
+   Fix: added os.makedirs(NOTES_FOLDER, exist_ok=True) at startup.
+
+[FIXED] ollama_client.py pointed to non-existent reference_server.py
+   Date: May 25, 2026
+   Fix: renamed SERVER_SCRIPT constant to "mcp_tool.py".
+
+[BACKLOG] Add structured logging (JSON) to MCP server
+[BACKLOG] Auth layer for remote MCP transport
+[BACKLOG] Migrate from FAISS to Qdrant (see meeting_notes.txt)
+[BACKLOG] Add eval harness — RAGAS or custom
+
+Lessons Learned
+---------------
+- Always use absolute paths in MCP configs. Relative paths break Cursor.
+- `mcp.run(transport="stdio")` MUST be the last line — it blocks.
+- Tool docstrings are *the* knob for agent accuracy. Tune them first.
