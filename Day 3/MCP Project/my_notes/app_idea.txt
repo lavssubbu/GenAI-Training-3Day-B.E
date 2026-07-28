@@ -1,1 +1,8 @@
+App Idea: "PocketProfessor"
 
+A mobile app that lets students upload any textbook PDF and instantly
+chat with it. Uses RAG to answer questions, generates daily quizzes
+from weak areas, and tracks revision streaks like Duolingo.
+
+Target audience: high school + college students.
+Differentiator: works fully offline once a book is downloaded.
